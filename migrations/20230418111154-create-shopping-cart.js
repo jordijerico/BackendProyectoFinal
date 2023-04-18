@@ -16,15 +16,19 @@ module.exports = {
         type: Sequelize.INTEGER,
         references: {
           model: 'Users',
-          key: 'id' 
-        }
+          key: 'id'
+        },
+        onDelete: 'CASCADE',
+        onUpdate: 'CASCADE' 
       },
       product_id: {
         type: Sequelize.INTEGER,
         references: {
           model: 'Products',
-          key: 'id'     
-        }
+          key: 'id'              
+        },
+        onDelete: 'CASCADE',
+        onUpdate: 'CASCADE' 
       },
       createdAt: {
         allowNull: false,

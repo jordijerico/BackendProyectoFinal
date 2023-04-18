@@ -13,7 +13,9 @@ module.exports = (sequelize, DataTypes) => {
       // define association here
 
       User.hasMany(models.Review, {
-        foreignKey: 'user_id'
+        foreignKey: 'user_id',
+        onDelete: 'CASCADE'
+        
       });
 
       User.belongsToMany(models.Product, { through: 'ShoppingCarts', foreignKey: 'user_id'});
