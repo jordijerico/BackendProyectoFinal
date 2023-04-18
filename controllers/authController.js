@@ -68,7 +68,7 @@ authController.login = async (req, res) => {
                 email: user.email,
                 roleId: user.role_id
             },
-            'secreto'
+            'secret'
         );
         return res.json(
             {

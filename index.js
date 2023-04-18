@@ -6,9 +6,8 @@ const router = require('./router');
 app.use(express.json());
 app.use(router);
 
-
 app.get("/", (req,res) => {
-    return res.send("Holaa")
+    return res.send("Hola, página de prueba!")
 })
 
 
