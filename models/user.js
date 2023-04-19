@@ -18,7 +18,13 @@ module.exports = (sequelize, DataTypes) => {
         
       });
 
-      User.belongsToMany(models.Product, { through: 'ShoppingCarts', foreignKey: 'user_id'});
+      User.hasMany(models.Order, {
+        foreignKey: 'user_id',
+        onDelete: 'CASCADE'
+        
+      });
+
+
     }
   }
   User.init({
