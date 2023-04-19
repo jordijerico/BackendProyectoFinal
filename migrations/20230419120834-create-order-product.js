@@ -16,7 +16,9 @@ module.exports = {
           model: 'Products',
           key: 'id'
 
-        }
+        },
+        onDelete: 'CASCADE',
+        onUpdate: 'CASCADE'
       },
       order_id: {
         type: Sequelize.INTEGER,
@@ -25,7 +27,10 @@ module.exports = {
           model: 'Orders',
           key: 'id'
 
-        }
+        },
+        
+        onDelete: 'CASCADE',
+        onUpdate: 'CASCADE'
       },
       price: {
         type: Sequelize.FLOAT
