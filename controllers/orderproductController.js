@@ -7,8 +7,11 @@ orderproductController.getOrderProductByOrderId = async (req, res) => {
         // const orderId = req.params.id;
         const order_product = await Order.findAll({ 
             where: { user_id: req.userId } ,
-            include : Product
-        })
+            include : {
+               model:  Product,
+               attributes: { exclude: ["quantity"] }
+        }
+    })
         return res.json(
             {
                 success: true,
