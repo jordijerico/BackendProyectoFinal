@@ -53,5 +53,32 @@ orderController.createOrder = async (req, res) => {
     }
 }
 
+orderController.updateOrder = async (req, res) => {
+    try {
+        const orderId = req.params.id;
+        const status = req.body.status;
+        
+        const updateOrder = await Order.update({ status: status}, { where: { id: orderId} })
+
+        return res.json(
+            {
+                
+                success: true,
+                message: "Order status updated",
+                data: updateOrder
+            }
+        );
+    } catch (error) {
+        return res.status(500).json(
+            {
+                success: false,
+                message: "something went wrong",
+                error: error.message
+            }
+        );
+    }
+}
+
+
 
 module.exports = orderController;
