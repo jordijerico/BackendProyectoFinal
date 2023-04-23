@@ -1,12 +1,14 @@
-const { Order,Order_product } = require("../models");
+const { Order,Order_product, Product} = require("../models");
 const orderproductController = {};
 
 orderproductController.getOrderProductByOrderId = async (req, res) => {
     try {
         
         // const orderId = req.params.id;
-        const order_product = await Order_product.findAll({ where: { order_id: req.params.id } })
-        
+        const order_product = await Order.findAll({ 
+            where: { user_id: req.userId } ,
+            include : Product
+        })
         return res.json(
             {
                 success: true,
