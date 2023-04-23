@@ -1,4 +1,4 @@
-const { Product } = require("../models");
+const { Product, Review } = require("../models");
 const productController = {};
 
 productController.getAllProducts = async (req, res) => {
@@ -26,7 +26,9 @@ productController.getAllProducts = async (req, res) => {
 productController.getProductById = async (req, res) => {
     try {
         const productId = req.params.id;
-        const product = await Product.findByPk(productId)
+        const product = await Product.findByPk(productId, 
+            {include: Review}
+            )
         return res.json(
             {
                 success: true,
