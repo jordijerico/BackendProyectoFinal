@@ -65,8 +65,15 @@ authController.login = async (req, res) => {
             {
                 userId: user.id,
                 name: user.name,
+                surname: user.surname,
                 email: user.email,
-                roleId: user.role_id
+                roleId: user.role_id,
+                phone: user.phone,
+                dni: user.dni,
+                payment: user.payment,
+                address: user.address,
+                birthdate: user.birthdate,
+                password: user.password
             },
             'secret'
         );
