@@ -4,16 +4,11 @@ const app = express();
 const router = require('./router');
 const cors = require('cors');
 
-<system.webServer>
-
-    <httpProtocol>
-        <customHeaders>
-            <add name="Access-Control-Allow-Origin" value="*" />
-            <add name="Access-Control-Allow-Headers" value="Content-Type" />
-            <add name="Access-Control-Allow-Methods" value="GET, POST, PUT, DELETE, OPTIONS" />
-        </customHeaders>
-    </httpProtocol>
-</system.webServer>
+app.use(function(req, res, next) {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    next();
+  });
 
 let corsOptions = {//CONFIGURO OPCIONES DE CORS
     origin: "*",
