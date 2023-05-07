@@ -9,7 +9,7 @@ const verifyToken = (req, res, next) => {
         const [strategy, token] = authorization.split(" ");
 
         const decoded = jwt.verify(token, 'secret');
-    
+
         req.userId = decoded.userId;
         req.roleId = decoded.roleId;
         next();

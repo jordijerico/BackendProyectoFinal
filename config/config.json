@@ -1,9 +1,11 @@
 {
+ 
   "development": {
     "username": "root",
-    "password": "99Messi_",
-    "database": "ibebeoficial_database",
-    "host": "127.0.0.1",
+    "password": "NIwipm86EAuL7Vx6GHL3",
+    "database": "railway",
+    "host": "containers-us-west-117.railway.app",
+    "port": 5984,
     "dialect": "mysql"
   },
   "test": {

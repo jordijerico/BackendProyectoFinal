@@ -9,8 +9,9 @@ orderproductController.getOrderProductByOrderId = async (req, res) => {
             where: { user_id: req.userId } ,
             include : {
                model:  Product,
-               attributes: { exclude: ["quantity"] }
+               attributes: { exclude: ["quantity", "createdAt", "updatedAt"] }
         }
+       
     })
         return res.json(
             {

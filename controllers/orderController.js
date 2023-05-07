@@ -27,6 +27,7 @@ orderController.getAllOrdersByUser = async (req, res) => {
 
 orderController.createOrder = async (req, res) => {
     try {
+        
         const newOrder = await Order.create(
             {
                 user_id: req.userId,
