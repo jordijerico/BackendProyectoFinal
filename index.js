@@ -5,7 +5,7 @@ const router = require('./router');
 const cors = require('cors');
 
 let corsOptions = {//CONFIGURO OPCIONES DE CORS
-    origin: "http://backendproyectofinal-production.up.railway.app",
+    origin: "*",
     methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
     preflightContinue: false,
     optionsSuccessStatus: 204
