@@ -14,10 +14,11 @@ let corsOptions = {//CONFIGURO OPCIONES DE CORS
     origin: "*",
     methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
     preflightContinue: false,
+    
     optionsSuccessStatus: 204
 };
 
-app.use(cors(corsOptions));
+app.use(cors());
 app.use(express.json());
 app.use(router);
 
