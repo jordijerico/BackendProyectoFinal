@@ -1,11 +1,27 @@
-const { Order, Order_product } = require("../models");
+const { Order, Order_product, Product } = require("../models");
 
 const orderController = {};
 
 
 orderController.getAllOrdersByUser = async (req, res) => {
     try {
-        const ordersByUser = await Order.findAll({ where: { user_id: req.userId } });
+        const ordersByUser = await Order.findAll({
+            where: { user_id: req.userId },
+
+            include: [
+                {
+                    model: Order_product,
+                    include: [
+                        {
+                            model: Product
+                        }
+                    ]
+                }
+            ]
+
+        }
+        );
+        // const ordersProductsByUser = await Order_product.findAll({ where: { user_id: req.userId } });
         return res.json(
             {
                 success: true,
@@ -13,6 +29,8 @@ orderController.getAllOrdersByUser = async (req, res) => {
                 data: ordersByUser
             }
         )
+
+
     } catch (error) {
         return res.status(500).json(
             {
