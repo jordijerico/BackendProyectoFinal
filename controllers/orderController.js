@@ -1,4 +1,5 @@
-const { Order } = require("../models");
+const { Order, Order_product } = require("../models");
+
 const orderController = {};
 
 
@@ -27,13 +28,25 @@ orderController.getAllOrdersByUser = async (req, res) => {
 
 orderController.createOrder = async (req, res) => {
     try {
-        
+        const { products } = req.body;
         const newOrder = await Order.create(
             {
                 user_id: req.userId,
                 status: "pending"
             }
         )
+        await Promise.all(products.map(async (prod) => {
+            await Order_product.create(
+                {
+                    product_id: prod.id,
+                    order_id: newOrder.id,
+                    quantity: 1,
+                    price: prod.price
+
+                }
+            )
+        }));
+
 
         return res.json(
             {
@@ -58,12 +71,12 @@ orderController.updateOrder = async (req, res) => {
     try {
         const orderId = req.params.id;
         const status = req.body.status;
-        
-        const updateOrder = await Order.update({ status: status}, { where: { id: orderId} })
+
+        const updateOrder = await Order.update({ status: status }, { where: { id: orderId } })
 
         return res.json(
             {
-                
+
                 success: true,
                 message: "Order status updated",
                 data: updateOrder

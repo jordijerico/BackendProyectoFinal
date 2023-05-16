@@ -1,4 +1,4 @@
-const { Order,Order_product, Product} = require("../models");
+const { Order, Product} = require("../models");
 const orderproductController = {};
 
 orderproductController.getOrderProductByOrderId = async (req, res) => {

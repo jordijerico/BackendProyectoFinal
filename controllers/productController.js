@@ -26,9 +26,7 @@ productController.getAllProducts = async (req, res) => {
 productController.getProductById = async (req, res) => {
     try {
         const productId = req.params.id;
-        const product = await Product.findByPk(productId, 
-            {include: Review}
-            )
+        const product = await Product.findByPk(productId)
         return res.json(
             {
                 success: true,
